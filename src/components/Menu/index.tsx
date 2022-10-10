@@ -12,6 +12,7 @@ import {
   SubMenuItem,
   Grid,
   Flex,
+  Heading,
 } from '@atmoutsourcing/siakit';
 
 import { BsBuilding,
@@ -28,7 +29,11 @@ export function MenuSideBar(){
       <Sidebar>
         <Flex>
           <Menu>
-              <MenuHeader children="SiaKit" onClick={() => history(`/maintenance`)}/>
+              <MenuHeader onClick={() => history(`/maintenance`)}>
+                <Heading>
+                  Sia
+                </Heading>
+              </MenuHeader>
             <MenuItem icon={<BsHouseDoor/>} value="1">
               Manutenção
             </MenuItem>

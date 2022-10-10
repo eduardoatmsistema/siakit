@@ -1,4 +1,4 @@
-import { Card, Flex, Form, Select } from "@atmoutsourcing/siakit";
+import { Card, Flex, Form, Select, Accordion, AccordionItem } from "@atmoutsourcing/siakit";
 import { FormHandles } from "@unform/core";
 import { useRef } from "react";
 
@@ -40,6 +40,18 @@ export function Maintenance(){
                 { value: "teste2", label: "teste3"},
               ]} />
             </Form>
+
+            <Accordion>
+              <AccordionItem value="1" title="teste1">
+                teste
+              </AccordionItem>
+              <AccordionItem value="2" title="teste1">
+                teste2
+              </AccordionItem>
+              <AccordionItem value="3" title="teste1">
+                teste3
+              </AccordionItem>
+            </Accordion>
 
           {/* <Card flex padding flexWrap="wrap" overflow="auto">
             <Accordion>
