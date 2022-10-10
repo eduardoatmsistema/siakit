@@ -1,15 +1,19 @@
 import { Flex, Grid } from "@atmoutsourcing/siakit";
-import { BrowserRouter } from "react-router-dom"
-import { Header } from "./components/Header";
+import { BrowserRouter, useNavigate } from "react-router-dom"
+import { MenuSideBar } from "./components/Menu";
+import { SignIn } from "./pages/SignIn";
 import Router from './routes/Router'
 import Global from './styles/global';
 
 function App() {
-
   return (
       <BrowserRouter>
         <Global />
-        <Router />
+        <Grid columns="240px 1fr">
+          <MenuSideBar />
+          <Router />
+        </Grid>
+
       </BrowserRouter>
   )
 }

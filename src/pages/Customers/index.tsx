@@ -1,9 +1,12 @@
 import { Flex } from "@atmoutsourcing/siakit";
+import { Header } from "../../components/Header";
 
 export function Customers(){
   return (
-    <Flex margin>
-      <p>daspdsadsa</p>
+    <Flex>
+      <Flex margin>
+        <p>alo1</p>
+      </Flex>
     </Flex>
   )
 }
