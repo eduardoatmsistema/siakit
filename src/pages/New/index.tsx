@@ -1,13 +1,17 @@
-import { Card, Flex } from "@atmoutsourcing/siakit";
+import { Card, Flex, Grid } from "@atmoutsourcing/siakit";
+import { MenuSideBar } from "../../components/MenuSideBar";
 
 export function New(){
   return (
-    <Flex>
-      <Flex margin>
-        <Card width="86vw">
-          <p>teste</p>
-        </Card>
+    <Grid columns="240px 1fr">
+      <MenuSideBar />
+      <Flex>
+        <Flex margin>
+          <Card width="500px">
+            <p>teste</p>
+          </Card>
+        </Flex>
       </Flex>
-    </Flex>
+    </Grid>
   )
 }

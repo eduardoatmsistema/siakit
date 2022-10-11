@@ -1,11 +1,15 @@
-import { Flex } from "@atmoutsourcing/siakit";
+import { Flex, Grid } from "@atmoutsourcing/siakit";
+import { MenuSideBar } from "../../components/MenuSideBar";
 
 export function Profile(){
   return (
-    <Flex>
-      <Flex margin>
-        <p>página profile</p>
+    <Grid columns="240px 1fr">
+      <MenuSideBar />
+      <Flex>
+        <Flex margin>
+          <p>página profile</p>
+        </Flex>
       </Flex>
-    </Flex>
+      </Grid>
   )
 }

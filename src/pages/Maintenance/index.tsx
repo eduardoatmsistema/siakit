@@ -1,6 +1,7 @@
-import { Card, Flex, Form, Select, Accordion, AccordionItem } from "@atmoutsourcing/siakit";
+import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid } from "@atmoutsourcing/siakit";
 import { FormHandles } from "@unform/core";
 import { useRef } from "react";
+import { MenuSideBar } from "../../components/MenuSideBar";
 
 export function Maintenance(){
   const formRef = useRef<FormHandles>(null);
@@ -28,6 +29,8 @@ export function Maintenance(){
   ]
 
   return (
+    <Grid columns="240px 1fr">
+      <MenuSideBar />
       <Flex overflow="auto" flexWrap="wrap">
         <Flex gap margin flex direction="column" overflow="auto">
           <Card padding>
@@ -58,11 +61,11 @@ export function Maintenance(){
             {opcoes.map((pessoa) => {
               return (
                 <Flex flex overflow="auto">
-
+                
                 <AccordionItem value={pessoa.id} title={`${pessoa.id} - ${pessoa.titulo} `}>
-                  <Flex overflow="auto" height={60} padding={15}>
-                    {pessoa.nome}
-                  </Flex>
+                <Flex overflow="auto" height={60} padding={15}>
+                {pessoa.nome}
+                </Flex>
                 </AccordionItem>
                 
                 </Flex>
@@ -72,5 +75,6 @@ export function Maintenance(){
           </Card> */}
         </Flex>
       </Flex>
+    </Grid>
   )
 }

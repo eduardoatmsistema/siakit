@@ -1,6 +1,6 @@
-import { Button, Card, Flex, Form, Input, PasswordInput, Text } from "@atmoutsourcing/siakit";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Button, Card, Flex, Form, Input, PasswordInput, Text } from "@atmoutsourcing/siakit";
 
 export function SignIn(){
 
@@ -18,7 +18,7 @@ export function SignIn(){
   }
 
   return (
-    <div style={{ backgroundImage: "url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000)"}}>
+    <div style={{ backgroundImage: ""}}>
       <Flex height="100vh" width="100vw" align="center" justify="center">
         <Card height={300} width={500} align="center" justify="center" direction="column" gap>
           <Form onSubmit={ handleSubmit } direction="column" gap>

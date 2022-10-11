@@ -1,12 +1,15 @@
-import { Flex } from "@atmoutsourcing/siakit";
-import { Header } from "../../components/Header";
+import { Flex, Grid } from "@atmoutsourcing/siakit";
+import { MenuSideBar } from "../../components/MenuSideBar";
 
 export function Customers(){
   return (
-    <Flex>
-      <Flex margin>
-        <p>alo1</p>
+    <Grid columns="240px 1fr">
+      <MenuSideBar />
+      <Flex>
+        <Flex margin>
+          <p>alo1</p>
+        </Flex>
       </Flex>
-    </Flex>
+    </Grid>
   )
 }

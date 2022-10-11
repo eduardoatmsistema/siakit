@@ -34,13 +34,13 @@ export function MenuSideBar(){
                   Sia
                 </Heading>
               </MenuHeader>
-            <MenuItem icon={<BsHouseDoor/>} value="1">
+            <MenuItem icon={<BsHouseDoor/>} value="1" tooltip="Manutenção">
               Manutenção
             </MenuItem>
-            <MenuItem icon={<BsBuilding/>} value="2">
+            <MenuItem icon={<BsBuilding/>} value="2" tooltip="Clientes">
               Clientes
             </MenuItem>
-            <MenuItem icon={<BsPerson/>} value="3">
+            <MenuItem icon={<BsPerson/>} value="3" tooltip="Perfil">
               Perfil
             </MenuItem>
           </Menu>
