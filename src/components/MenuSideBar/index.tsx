@@ -13,6 +13,7 @@ import {
   Grid,
   Flex,
   Heading,
+  Image
 } from '@atmoutsourcing/siakit';
 
 import { BsBuilding,
@@ -29,10 +30,10 @@ export function MenuSideBar(){
       <Sidebar>
         <Flex>
           <Menu>
-              <MenuHeader onClick={() => history(`/maintenance`)}>
-                <Heading>
-                  Sia
-                </Heading>
+              <MenuHeader onClick={() => history(`/maintenance`)} >
+                <Flex width={80}>
+                  <Image ratio={3.5} alt="logo-atm" src="https://sia.atmoutsourcing.com.br/assets/sia-logo-yellow.afe8f0e3.svg"/>
+                </Flex>
               </MenuHeader>
             <MenuItem icon={<BsHouseDoor/>} value="1" tooltip="Manutenção">
               Manutenção
