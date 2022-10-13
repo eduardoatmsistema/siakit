@@ -1,31 +1,30 @@
 import { Button, Card, Flex, Form, Input, PasswordInput, Text } from "@atmoutsourcing/siakit";
-import { useState } from "react";
+import img1  from '../../assets/img1.webp';
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { FormHandles } from "@unform/core";
+
+type IUser = {
+  nome1: String;
+  email: String;
+  password: String;
+}
 
 export function SignUp(){
+  const formRef = useRef<FormHandles>(null);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  function handleSubmit(){
-    const data = {
-      name,
-      email,
-      password
-    }
-
+  function handleSubmit(data: IUser){
     console.log(data)
   }
 
   return (
-    <div style={{ backgroundImage: "url(https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_23-2148902771.jpg?w=2000)"}}>
+    <div style={{ backgroundImage: `url(${img1})`}}>
       <Flex height="100vh" width="100vw" align="center" justify="center">
-        <Card height={350} width={500} align="center" justify="center" direction="column" gap>
-          <Form onSubmit={ handleSubmit } direction="column" gap>
-            <Input name="nome" label="nome" type="text" value={name} placeholder="digite seu nome" onChange={(name) => setName(name.target.value)}/>
-            <Input name="email" label="email" type="email" value={email} placeholder="digite seu email" onChange={(email) => setEmail(email.target.value)}/>
-            <PasswordInput name="password" label="senha" value={password} placeholder="digite sua senha" onChange={(password) => setPassword(password.target.value)}/>
+        <Card height={350} width={400} align="center" justify="center" direction="column" gap>
+          <Form ref={formRef} onSubmit={ handleSubmit } direction="column" gap>
+            <Input name="nome" label="nome" type="text" placeholder="Digite seu nome" />
+            <Input name="email" label="email" type="email" placeholder="Digite seu email" />
+            <PasswordInput name="password" label="senha" placeholder="Digite sua senha" />
             <Button type="submit">
               Cadastrar
             </Button>

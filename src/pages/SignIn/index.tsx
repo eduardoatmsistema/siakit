@@ -1,35 +1,58 @@
-import { useState } from "react";
+import { Card, Flex, Text, PasswordInput, Button, Form, Input } from "@atmoutsourcing/siakit";
+import img1 from '../../assets/img1.webp';
+import { FormHandles } from "@unform/core";
+import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { Button, Card, Flex, Form, Input, PasswordInput, Text } from "@atmoutsourcing/siakit";
 
 export function SignIn(){
+  const formRef = useRef<FormHandles>(null);
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  function handleSubmit(){
-
-    const data = {
-      email,
-      password
-    }
-
-    alert(`suas credenciais email: ${data.email}, senha: ${data.password}`)
+  function handleSubmit(data: any) {
+    console.log(data);
   }
 
+
   return (
-    <div style={{ backgroundImage: ""}}>
-      <Flex height="100vh" width="100vw" align="center" justify="center">
-        <Card height={300} width={500} align="center" justify="center" direction="column" gap>
-          <Form onSubmit={ handleSubmit } direction="column" gap>
-            <Input name="email" label="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="digite seu email"/>
-            <PasswordInput name="password" label="senha" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="digite sua senha"/>
-            <Button type="submit">
-              Logar
-            </Button>
+    <div style={{ backgroundImage: `url(${img1})`}}>
+      <Flex
+        height="100vh" 
+        align="center" 
+        justify="center"
+        >
+        <Card 
+          height={250}
+          width={300}
+          justify="center" 
+          align="center" 
+          direction="column" 
+          gap
+          >
+          <Form 
+            ref={formRef} 
+            onSubmit={handleSubmit} 
+            direction="column" 
+            gap
+            >
+            <Input 
+              name="email" 
+              label="Email" 
+              placeholder="Digite seu email" 
+            />
+            <PasswordInput 
+              name="password" 
+              label="Senha" 
+              placeholder="Digite sua senha" 
+            />
+              <Button type="submit">
+                Salvar
+              </Button>
           </Form>
-          <Flex direction="column">
-            <Link to="/register">
+
+          <Flex>
+            <Link 
+              to="/register" 
+              style={{ textDecoration: "none" }}
+              >
               <Text>
                 Não possui conta? Cadastre-se
               </Text>

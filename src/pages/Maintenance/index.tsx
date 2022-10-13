@@ -1,4 +1,4 @@
-import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid } from "@atmoutsourcing/siakit";
+import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid, Separator } from "@atmoutsourcing/siakit";
 import { FormHandles } from "@unform/core";
 import { useRef } from "react";
 import { MenuSideBar } from "../../components/MenuSideBar";
@@ -27,34 +27,38 @@ export function Maintenance(){
     {nome: "pedro", titulo: "admin", id: "6"},
     {nome: "pedro", titulo: "admin", id: "6"},
   ]
-
+  
   return (
     <Grid columns="240px 1fr">
       <MenuSideBar />
       <Flex overflow="auto" flexWrap="wrap">
         <Flex gap margin flex direction="column" overflow="auto">
-          <Card padding>
+          <Card padding height={100}>
               <p>teste1</p>
           </Card>
-            <Form ref={formRef} onSubmit={() => undefined}>
-              <Select name="teste" options={[
-                { value: "teste", label: "teste"},
-                { value: "teste1", label: "teste2"},
-                { value: "teste2", label: "teste3"},
-              ]} />
+          <Card direction="column" height={800}>
+            <Form ref={formRef} onSubmit={() => undefined} margin>
+                <Select name="teste" options={[
+                  { value: "teste", label: "teste"},
+                  { value: "teste1", label: "teste2"},
+                  { value: "teste2", label: "teste3"},
+                ]} />
             </Form>
-
-            <Accordion>
-              <AccordionItem value="1" title="teste1">
-                teste
-              </AccordionItem>
-              <AccordionItem value="2" title="teste1">
-                teste2
-              </AccordionItem>
-              <AccordionItem value="3" title="teste1">
-                teste3
-              </AccordionItem>
-            </Accordion>
+            
+            <Flex margin>  
+              <Accordion>
+                <AccordionItem value="1" title="teste1">
+                  teste
+                </AccordionItem>
+                <AccordionItem value="2" title="teste2">
+                  teste2
+                </AccordionItem>
+                <AccordionItem value="3" title="teste3">
+                  teste3
+                </AccordionItem>
+              </Accordion>
+            </Flex>
+          </Card>
 
           {/* <Card flex padding flexWrap="wrap" overflow="auto">
             <Accordion>
@@ -72,7 +76,7 @@ export function Maintenance(){
                 )
               })}
               </Accordion> 
-          </Card> */}
+            </Card> */}
         </Flex>
       </Flex>
     </Grid>
