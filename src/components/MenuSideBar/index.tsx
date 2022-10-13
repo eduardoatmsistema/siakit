@@ -31,7 +31,7 @@ export function MenuSideBar(){
         <Flex>
           <Menu>
               <MenuHeader onClick={() => history(`/maintenance`)} >
-                <Flex width={80}>
+                <Flex width={80} height={20}>
                   <Image ratio={3.5} alt="logo-atm" src="https://sia.atmoutsourcing.com.br/assets/sia-logo-yellow.afe8f0e3.svg"/>
                 </Flex>
               </MenuHeader>
