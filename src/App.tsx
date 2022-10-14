@@ -4,6 +4,7 @@ import Global from './styles/global';
 
 function App() {
   return (
+      
       <BrowserRouter>
         <Global />
         <Router />

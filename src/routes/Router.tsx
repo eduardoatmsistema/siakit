@@ -12,8 +12,8 @@ export default function Router(): JSX.Element {
     <Routes>
       <Route path="*" element={<Erro />} />
 
-      <Route path="/" element={<SignIn />} />
-      <Route path="/register" element={<SignUp />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/register" element={<SignUp />} />
 
       <Route path="/maintenance" element={<Maintenance />} />
       <Route path="/customers" element={<Customers />} />

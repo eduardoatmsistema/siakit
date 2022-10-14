@@ -1,10 +1,13 @@
-import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid, Separator } from "@atmoutsourcing/siakit";
+import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid, Separator, Button } from "@atmoutsourcing/siakit";
+import { useLoading } from '@atmoutsourcing/siakit';
 import { FormHandles } from "@unform/core";
 import { useRef } from "react";
 import { MenuSideBar } from "../../components/MenuSideBar";
 
 export function Maintenance(){
   const formRef = useRef<FormHandles>(null);
+
+  const { setLoading, clearLoading } = useLoading();
 
   const opcoes = [
     {nome: "eduardo", titulo: "admin", id: "1"},
@@ -28,13 +31,32 @@ export function Maintenance(){
     {nome: "pedro", titulo: "admin", id: "6"},
   ]
   
+
+  function handleLoading(){
+    setLoading(true);
+    console.log("clicou");
+    setInterval(() => {
+      clearLoading();
+      console.log("terminou de carregar");
+    }, 3000)
+  }
+
   return (
     <Grid columns="240px 1fr">
       <MenuSideBar />
       <Flex overflow="auto" flexWrap="wrap">
         <Flex gap margin flex direction="column" overflow="auto">
-          <Card padding height={100}>
+          <Card padding direction="column" height={100}>
               <p>teste1</p>
+              <Flex>
+                <Button 
+                  type="button" 
+                  onClick={handleLoading} 
+                  size="sm"
+                >
+                  Clique para ver o Loading
+                </Button>
+              </Flex>
           </Card>
           <Card direction="column" height={800}>
             <Form ref={formRef} onSubmit={() => undefined} margin>

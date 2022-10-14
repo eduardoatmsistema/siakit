@@ -34,6 +34,9 @@ export function MenuSideBar(){
                 <Flex width={80} height={20}>
                   <Image ratio={3.5} alt="logo-atm" src="https://sia.atmoutsourcing.com.br/assets/sia-logo-yellow.afe8f0e3.svg"/>
                 </Flex>
+                <Flex width={42} padding={8}>
+                  <Image ratio={1} alt="logo-atm" src="https://sia.atmoutsourcing.com.br/assets/sia-logo-icon-yellow.987ab41e.svg"/>
+                </Flex>
               </MenuHeader>
             <MenuItem icon={<BsHouseDoor/>} value="1" tooltip="Manutenção">
               Manutenção

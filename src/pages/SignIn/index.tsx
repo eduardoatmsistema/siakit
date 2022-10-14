@@ -1,14 +1,46 @@
-import { Card, Flex, Text, PasswordInput, Button, Form, Input } from "@atmoutsourcing/siakit";
+import { Card, Flex, Text, PasswordInput, Button, Form, Input, useLoading } from "@atmoutsourcing/siakit";
 import img1 from '../../assets/img1.webp';
 import { FormHandles } from "@unform/core";
-import { useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../contexts/AuthContext";
+import { api } from "../../services/apiClient";
+
+import { destroyCookie, setCookie, parseCookies } from 'nookies'
 
 export function SignIn(){
   const formRef = useRef<FormHandles>(null);
 
-  function handleSubmit(data: any) {
-    console.log(data);
+  const { setLoading } = useLoading();
+  const [user, setUser] = useState();
+
+  async function handleSubmit(data: any) {
+
+    const { email, password } = data;
+
+    try {
+      const response = await api.post('/session', {
+        email,
+        password
+      })
+
+      const { id, name, token } = response.data;
+
+      setCookie(undefined, '@nextauth.token', token, {
+        maxAge: 60 * 60 * 24 * 30, // Expirar em 1 mes
+        path: "/" // Quais caminhos terao acesso ao cookie
+      })
+
+      setUser({
+        id,
+        name,
+        email,
+      })
+
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    }catch(err){
+      console.log("ERRO AO ACESSAR ", err)
+    }
   }
 
 
@@ -62,4 +94,8 @@ export function SignIn(){
       </Flex>
     </div>
   )
+}
+
+function setUser(arg0: { id: any; name: any; email: any; }) {
+  throw new Error("Function not implemented.");
 }

@@ -3,9 +3,10 @@ import img1  from '../../assets/img1.webp';
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FormHandles } from "@unform/core";
+import { api } from "../../services/apiClient";
 
 type IUser = {
-  nome1: String;
+  name: String;
   email: String;
   password: String;
 }
@@ -13,8 +14,25 @@ type IUser = {
 export function SignUp(){
   const formRef = useRef<FormHandles>(null);
 
-  function handleSubmit(data: IUser){
-    console.log(data)
+  async function handleSubmit(data: IUser) {
+
+    const { name, email, password } = data;
+
+    console.log(name)
+
+    try {
+      const response = await api.post('/users', {
+        name,
+        email,
+        password
+      })
+
+      return console.log(response.data);
+      
+
+    }catch(err){
+      console.log("ERRO AO ACESSAR ", err)
+    }
   }
 
   return (
@@ -40,7 +58,7 @@ export function SignUp(){
             gap
             >
             <Input 
-              name="nome" 
+              name="name" 
               label="nome" 
               type="text" 
               placeholder="Digite seu nome" 
