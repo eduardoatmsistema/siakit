@@ -3,7 +3,6 @@ import img1 from '../../assets/img1.webp';
 import { FormHandles } from "@unform/core";
 import { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { UserContext } from "../../contexts/AuthContext";
 import { api } from "../../services/apiClient";
 
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
