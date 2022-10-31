@@ -1,45 +1,24 @@
-import { Card, Flex, Text, PasswordInput, Button, Form, Input, useLoading } from "@atmoutsourcing/siakit";
 import img1 from '../../assets/img1.webp';
-import { FormHandles } from "@unform/core";
 import { useContext, useRef, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { api } from "../../services/apiClient";
-
-import { destroyCookie, setCookie, parseCookies } from 'nookies'
+import { Flex } from "@siakit/layout";
+import { Card } from "@siakit/card";
+import { Form, TextInput, FormHandles, PasswordInput } from "@siakit/form-unform";
+import { useLoading } from '@siakit/loading';
+import { Button } from '@siakit/button';
+import { Text } from '@siakit/text';
+import { Heading } from '@siakit/heading';
 
 export function SignIn(){
+  const history = useNavigate();
   const formRef = useRef<FormHandles>(null);
 
   const { setLoading } = useLoading();
   const [user, setUser] = useState();
 
   async function handleSubmit(data: any) {
-
-    const { email, password } = data;
-
-    try {
-      const response = await api.post('/session', {
-        email,
-        password
-      })
-
-      const { id, name, token } = response.data;
-
-      setCookie(undefined, '@nextauth.token', token, {
-        maxAge: 60 * 60 * 24 * 30, // Expirar em 1 mes
-        path: "/" // Quais caminhos terao acesso ao cookie
-      })
-
-      setUser({
-        id,
-        name,
-        email,
-      })
-
-      api.defaults.headers.common["Authorization"] = `Bearer ${token}`
-    }catch(err){
-      console.log("ERRO AO ACESSAR ", err)
-    }
   }
 
 
@@ -51,27 +30,26 @@ export function SignIn(){
         justify="center"
         >
         <Card 
-          height={250}
-          width={300}
+          height={350}
+          width={350}
           justify="center" 
           align="center" 
           direction="column" 
           gap
           >
+          <Heading size="sm">Bem-vindo, faça seu login</Heading>
           <Form 
             ref={formRef} 
             onSubmit={handleSubmit} 
-            direction="column" 
-            gap
             >
-            <Input 
+            <TextInput 
               name="email" 
               label="Email" 
               placeholder="Digite seu email" 
             />
-            <PasswordInput 
-              name="password" 
-              label="Senha" 
+            <PasswordInput
+              name="password"
+              label="Senha"
               placeholder="Digite sua senha" 
             />
               <Button type="submit">
@@ -80,14 +58,9 @@ export function SignIn(){
           </Form>
 
           <Flex>
-            <Link 
-              to="/register" 
-              style={{ textDecoration: "none" }}
-              >
-              <Text>
+              <Text onClick={() => history('/register')} style={{ cursor: 'pointer' }}>
                 Não possui conta? Cadastre-se
               </Text>
-            </Link>
           </Flex>
         </Card>
       </Flex>

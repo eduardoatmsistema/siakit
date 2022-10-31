@@ -1,20 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import {
-  Sidebar,
-  Menu,
-  MenuHeader,
-  MenuTitle,
-  MenuItem,
-  SubMenu,
-  SubMenuTitle,
-  SubMenuSeparator,
-  SubMenuItem,
-  Grid,
-  Flex,
-  Heading,
-  Image
-} from '@atmoutsourcing/siakit';
+import { Sidebar, Menu, MenuHeader, MenuItem, MenuTitle, SubMenu, SubMenuItem, SubMenuSeparator, SubMenuTitle } from '@siakit/sidebar';
+import { Image } from '@siakit/image';
+import { Flex } from '@siakit/layout';
 
 import { BsBuilding,
   BsHouseDoor, 
@@ -27,7 +15,7 @@ export function MenuSideBar(){
 
   return (
     <Flex height="100vh">
-      <Sidebar>
+      <Sidebar open onOpenChange={() => undefined }>
         <Flex>
           <Menu>
               <MenuHeader onClick={() => history(`/maintenance`)} >

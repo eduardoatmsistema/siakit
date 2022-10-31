@@ -1,4 +1,8 @@
-import { Flex, Grid, Heading, Text, Button } from "@atmoutsourcing/siakit";
+import { Flex, Grid } from '@siakit/layout';
+import { Heading } from '@siakit/heading';
+import { Text } from '@siakit/text';
+import { Button } from '@siakit/button';
+
 import { Link } from "react-router-dom";
 
 export function Erro(){

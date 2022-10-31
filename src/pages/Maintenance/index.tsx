@@ -1,5 +1,10 @@
-import { Card, Flex, Form, Select, Accordion, AccordionItem, Grid, Separator, Button } from "@atmoutsourcing/siakit";
-import { useLoading } from '@atmoutsourcing/siakit';
+import { useLoading } from "@siakit/loading";
+import { Card } from '@siakit/card';
+import { Form } from '@siakit/form-unform';
+import { Flex, Grid } from "@siakit/layout";
+import { Select } from '@siakit/form-components';
+import { Accordion, AccordionItem } from '@siakit/accordion';
+import { Button } from "@siakit/button";
 import { FormHandles } from "@unform/core";
 import { useRef } from "react";
 import { MenuSideBar } from "../../components/MenuSideBar";

@@ -1,8 +1,14 @@
-import { Button, Card, Flex, Form, Input, PasswordInput, Text } from "@atmoutsourcing/siakit";
+import { Button } from "@siakit/button";
+import { Flex } from "@siakit/layout";
+import { Card } from "@siakit/card";
+import { Form, FormHandles, PasswordInput, TextInput } from "@siakit/form-unform";
+import {  } from '@siakit/form-components'
+import { Text } from "@siakit/text";
+
+
 import img1  from '../../assets/img1.webp';
 import { useRef } from "react";
-import { Link } from "react-router-dom";
-import { FormHandles } from "@unform/core";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/apiClient";
 
 type IUser = {
@@ -12,27 +18,10 @@ type IUser = {
 }
 
 export function SignUp(){
+  const history = useNavigate();
   const formRef = useRef<FormHandles>(null);
 
   async function handleSubmit(data: IUser) {
-
-    const { name, email, password } = data;
-
-    console.log(name)
-
-    try {
-      const response = await api.post('/users', {
-        name,
-        email,
-        password
-      })
-
-      return console.log(response.data);
-      
-
-    }catch(err){
-      console.log("ERRO AO ACESSAR ", err)
-    }
   }
 
   return (
@@ -53,29 +42,24 @@ export function SignUp(){
           >
           <Form 
             ref={formRef} 
-            onSubmit={ handleSubmit } 
-            direction="column" 
-            gap
+            onSubmit={ handleSubmit }
             >
-            <Input 
+            <TextInput 
               name="name" 
-              label="nome" 
-              type="text" 
+              label="Nome" 
               placeholder="Digite seu nome" 
             />
-            <Input name="email" label="email" type="email" placeholder="Digite seu email" />
-            <PasswordInput name="password" label="senha" placeholder="Digite sua senha" />
+            <TextInput name="email" label="Email" placeholder="Digite seu email" />
+            <PasswordInput name="password" label="Senha" placeholder="Digite sua senha" />
             
             <Button type="submit">
               Cadastrar
             </Button>
           </Form>
           <Flex direction="column">
-            <Link to="/">
-              <Text>
+              <Text onClick={() => history('/')} style={{ cursor: 'pointer' }}>
                 Já possui conta? Faça o login
               </Text>
-            </Link>
           </Flex>
         </Card>
       </Flex>
