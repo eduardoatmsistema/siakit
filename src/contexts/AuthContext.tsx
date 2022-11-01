@@ -1,6 +1,5 @@
 import { createContext, ReactNode, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import { api } from '../services/apiClient';
 
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
@@ -55,9 +54,11 @@ export function AuthProvider({ children }: AuthProviderProps){
   useEffect(() => {
 
     // tentar pegar algo no cookie
-    const { '@nextauth.token': token } = parseCookies();
+    function loadStorage() {
 
-    if(token){
+      const persistedToken = localStorage.getItem('@');      
+      api.defaults.headers.common['Authorization'] = persistedToken;
+      if(persistedToken){
       api.get('/me').then(response => {
         const { id, name, email } = response.data;
 
@@ -67,14 +68,17 @@ export function AuthProvider({ children }: AuthProviderProps){
           email
         })
 
+        console.log(user)
+        
       })
       .catch(() => {
         //Se deu erro deslogamos o user.
         signOut();
       })
     }
+    }
 
-
+    loadStorage()
   }, [])
 
   async function signIn({ email, password }: SignInProps){
@@ -87,13 +91,18 @@ export function AuthProvider({ children }: AuthProviderProps){
 
       const { id, name, token } = response.data;
 
-      localStorage.setItem('@', token)
+      const persistedToken = `Bearer ${token}`
+
+      localStorage.setItem('@', JSON.stringify(persistedToken))
 
       setUser({
         id,
         name,
         email,
       })
+
+
+      api.defaults.headers.common['Authorization'] = `Bearer teste${token}`
       console.log('Logado com sucesso!')
 
       //Redirecionar o user para /dashboard
@@ -116,7 +125,7 @@ export function AuthProvider({ children }: AuthProviderProps){
       })
 
       console.log("Conta criada com sucesso!")
-      history('/')
+      history('/maintenance')
 
     }catch(err){
       console.log("erro ao cadastrar ", err)

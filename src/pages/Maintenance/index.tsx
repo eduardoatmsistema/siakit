@@ -25,7 +25,7 @@ export function Maintenance(){
   return (
     <Flex>
       <MenuSideBar/>
-      <p>teste</p>
+      <p>teste123</p>
     </Flex>
   )
 }

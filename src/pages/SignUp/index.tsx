@@ -7,9 +7,10 @@ import { Text } from "@siakit/text";
 
 
 import img1  from '../../assets/img1.webp';
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/apiClient";
+import { AuthContext } from "../../contexts/AuthContext";
 
 type IUser = {
   name: String;
@@ -18,10 +19,14 @@ type IUser = {
 }
 
 export function SignUp(){
+
+  const { signUp } = useContext(AuthContext);
   const history = useNavigate();
   const formRef = useRef<FormHandles>(null);
 
-  async function handleSubmit(data: IUser) {
+  async function handleSubmit(data: any) {
+    await signUp(data)
+
   }
 
   return (
