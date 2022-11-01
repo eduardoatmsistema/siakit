@@ -10,15 +10,18 @@ import { useLoading } from '@siakit/loading';
 import { Button } from '@siakit/button';
 import { Text } from '@siakit/text';
 import { Heading } from '@siakit/heading';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export function SignIn(){
   const history = useNavigate();
+  const { signIn } = useContext(AuthContext)
   const formRef = useRef<FormHandles>(null);
 
   const { setLoading } = useLoading();
   const [user, setUser] = useState();
 
   async function handleSubmit(data: any) {
+    await signIn(data);
   }
 
 

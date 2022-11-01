@@ -7,7 +7,6 @@ import { destroyCookie, setCookie, parseCookies } from 'nookies'
 
 
 type AuthContextData = {
-  user: UserProps;
   isAuthenticated: boolean;
   signIn: (credentials: SignInProps) => Promise<void>;
   signOut: () => void;
@@ -37,9 +36,9 @@ type AuthProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextData)
 
+export function signOut(){
 const history = useNavigate();
 
-export function signOut(){
   try{
     destroyCookie(undefined, '@nextauth.token')
     history('/');
@@ -49,6 +48,7 @@ export function signOut(){
 }
 
 export function AuthProvider({ children }: AuthProviderProps){
+  const history = useNavigate();
   const [user, setUser] = useState<UserProps>()
   const isAuthenticated = !!user;
 
@@ -87,24 +87,17 @@ export function AuthProvider({ children }: AuthProviderProps){
 
       const { id, name, token } = response.data;
 
-      setCookie(undefined, '@nextauth.token', token, {
-        maxAge: 60 * 60 * 24 * 30, // Expirar em 1 mes
-        path: "/" // Quais caminhos terao acesso ao cookie
-      })
+      localStorage.setItem('@', token)
 
       setUser({
         id,
         name,
         email,
       })
-
-      //Passar para proximas requisiçoes o nosso token
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-
       console.log('Logado com sucesso!')
 
       //Redirecionar o user para /dashboard
-      history('/dashboard')
+      history('/maintenance')
 
 
     }catch(err){
@@ -131,7 +124,7 @@ export function AuthProvider({ children }: AuthProviderProps){
   }
 
   return(
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signOut, signUp }}>
+    <AuthContext.Provider value={{ isAuthenticated, signIn, signOut, signUp }}>
       {children}
     </AuthContext.Provider>
   )

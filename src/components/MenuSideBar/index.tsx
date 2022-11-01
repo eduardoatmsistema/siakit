@@ -8,14 +8,17 @@ import { BsBuilding,
   BsHouseDoor, 
   BsPerson 
 } from 'react-icons/bs';
+import { useState } from 'react';
 
 export function MenuSideBar(){
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const history = useNavigate();
 
   return (
     <Flex height="100vh">
-      <Sidebar open onOpenChange={() => undefined }>
+      <Sidebar open={sidebarOpen} onOpenChange={() => setSidebarOpen(false) }>
         <Flex>
           <Menu>
               <MenuHeader onClick={() => history(`/maintenance`)} >
