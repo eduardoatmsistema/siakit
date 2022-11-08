@@ -11,6 +11,7 @@ import { Button } from '@siakit/button';
 import { Text } from '@siakit/text';
 import { Heading } from '@siakit/heading';
 import { AuthContext } from '../../contexts/AuthContext';
+import { MenuSideBar } from '../../components/MenuSideBar';
 
 export function SignIn(){
   const history = useNavigate();
@@ -27,6 +28,7 @@ export function SignIn(){
 
   return (
     <div style={{ backgroundImage: `url(${img1})`}}>
+      <MenuSideBar/>
       <Flex
         height="100vh" 
         align="center" 
