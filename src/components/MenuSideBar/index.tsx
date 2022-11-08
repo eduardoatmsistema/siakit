@@ -28,7 +28,7 @@ export function MenuSideBar(){
                 <Flex width={42} padding={8}>
                   <Image ratio={1} alt="logo-atm" src="https://sia.atmoutsourcing.com.br/assets/sia-logo-icon-yellow.987ab41e.svg"/>
                 </Flex>
-              </MenuHeader>
+              </MenuHeader> 
             <MenuItem icon={<BsHouseDoor/>} value="1" tooltip="Manutenção">
               Manutenção
             </MenuItem>
